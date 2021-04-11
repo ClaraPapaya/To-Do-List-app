@@ -8,7 +8,7 @@ function newItem(){
     if (inputValue === '') {
       alert("You must write something!");
     } else {
-      $('#input').append(li);
+      $('#list').append(li);
     }
 
 //crossing an item out
@@ -19,5 +19,16 @@ function newItem(){
     li.toggleClass('strike');
   });
 
-  //
+//adding the delete button "x"
+  let crossOutButton = $('<crossOutButton></crossOutButton>');
+  crossOutButton.append(document.createTextNode('x'));
+  li.append(crossOutButton);
+
+  function deleteListItem(){
+    li.addClass("delete")
+  }
+  crossOutButton.on("click", deleteListItem);
+
+//reordering the items
+  $('#list').sortable();
 }
